@@ -19,9 +19,13 @@ pipeline{
             }
         }
         stage("running aplication"){
+            env{
+                tag_version = "${env.BUILD_ID}"
+            }
             steps{
                 script{
                     withKubeConfig([credentialsId: "kubeconfig"]){
+                        sh 'sed -i "s/{{TAG}}/tag_version/g" kubenews.yaml'
                         sh "kubectl apply -f ./kubenews.yaml"
                     }
                 }
