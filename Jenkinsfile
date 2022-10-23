@@ -24,7 +24,7 @@ pipeline{
             }
             steps{
                 script{
-                    withKubeConfig([credentialsId: "kubeconfig"]){
+                    withKubeConfig([credentialsId: 'kubeconfig']){
                         sh 'sed -i "s/{{TAG}}/tag_version/g" kubenews.yaml'
                         sh "kubectl apply -f ./kubenews.yaml"
                     }
