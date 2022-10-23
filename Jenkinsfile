@@ -11,9 +11,10 @@ pipeline{
         stage("push docker iamge"){
             steps{
                 script{
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub')
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
                         dockerapp.push('latest')
                         dockerapp.push("${env.BUILD_ID}")
+                    }
                 }
             }
         }
