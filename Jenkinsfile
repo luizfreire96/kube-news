@@ -21,7 +21,7 @@ pipeline{
         stage("running aplication"){
             steps{
                 script{
-                    withKubeConfig([credentials: "kubeconfig"]){
+                    withKubeConfig([credentialsId: "kubeconfig"]){
                         sh "kubectl apply -f ./kubenews.yaml"
                     }
                 }
