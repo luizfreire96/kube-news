@@ -19,7 +19,7 @@ pipeline{
             }
         }
         stage("running aplication"){
-            env{
+            environment{
                 tag_version = "${env.BUILD_ID}"
             }
             steps{
