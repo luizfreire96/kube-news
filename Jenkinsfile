@@ -18,5 +18,13 @@ pipeline{
                 }
             }
         }
+        stage("running aplication"){
+            steps{
+                script{
+                    withKubeConfig([credentials: "kubeconfig"]){
+                        sh "kubectl apply -f ./kubenews.yaml"
+                    }
+                }
+            }
     }
 }
